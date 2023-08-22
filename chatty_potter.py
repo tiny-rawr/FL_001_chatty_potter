@@ -3,6 +3,7 @@ import streamlit as st
 def main():
     st.title("Chatty Potter ⚡️")
     st.write("A chatbot built with ChatGPT (3.5 Turbo) where you can pick a Harry Potter character and chat with them as if you were talking over text. My absolute FAVOURITE thing is the emojis that the characters respond with. It is utterly delightful when Voldy comes back with snake and death eater emojis 🐍💀")
+    st.markdown("Check out this post about [designing character personalities.](https://fairylightsai.substack.com/p/how-to-create-a-convincing-character)")
 
     # Dropdown menu with Harry Potter character names
     characters = [
@@ -18,10 +19,9 @@ def main():
     ]
     selected_character = st.selectbox("Select a character:", characters)
 
-    st.write(f"You selected: {selected_character}")
-
-    # Text area for writing a message
-    message = st.text_area("Write a message to the selected character:")
+    # Text input for writing a message
+    message = st.text_area(f"Write a message to {selected_character}:", value="",
+                            placeholder="Type your message here...")
 
     # Create a session state to store conversation history for each character
     if "conversation_history" not in st.session_state:
